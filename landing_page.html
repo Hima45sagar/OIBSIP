@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova — Simple & Unique Landing</title>
+  <meta name="description" content="A super‑simple, unique landing page using just HTML & CSS." />
+  <style>
+    :root{
+      --bg:#0b1220;       
+      --ink:#e9edf4;   
+      --muted:#a9b3c7;    
+      --card:#070b13;     
+      --ring:rgba(255,255,255,.12);
+      --accent:#7cf8d1; 
+      --accent-2:#8fa9ff; 
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f9fc; --ink:#0a1020; --muted:#47536b; --card:#ffffff; --ring:rgba(2,6,23,.08); }
+    }
+
+    *,*::before,*::after{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; color:var(--ink); background:radial-gradient(1200px 600px at 85% -10%, rgba(143,169,255,.25), transparent 60%), radial-gradient(900px 450px at -10% 25%, rgba(124,248,209,.22), transparent 60%), var(--bg); line-height:1.55 }
+    a{ color:inherit; text-decoration:none }
+    .container{ max-width:1000px; margin:0 auto; padding:0 20px }
+
+    .blob{ position:absolute; inset:auto; filter:blur(40px); opacity:.45; pointer-events:none; mix-blend-mode:screen }
+    .b1{ width:280px; height:280px; background:conic-gradient(from 90deg, var(--accent), transparent 40%); right:-60px; top:-60px; border-radius:50%; animation:float 10s ease-in-out infinite }
+    .b2{ width:260px; height:260px; background:conic-gradient(from -30deg, var(--accent-2), transparent 40%); left:-80px; bottom:-80px; border-radius:50%; animation:float 12s ease-in-out infinite reverse }
+    @keyframes float{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(12px) } }
+
+
+    header{ position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(8px); background:color-mix(in oklab, var(--bg), transparent 60%); border-bottom:1px solid var(--ring) }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0 }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800 }
+    .logo{ width:34px; height:34px; border-radius:10px; background:conic-gradient(from 180deg at 50% 50%, var(--accent), var(--accent-2), var(--accent)); box-shadow:0 6px 16px rgba(0,0,0,.25) }
+    .links{ display:flex; gap:16px }
+    .pill{ display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; font-weight:700; border:1px solid var(--ring); background:transparent }
+    .primary{ background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0b1220; border:none; box-shadow:var(--shadow) }
+
+    
+    .hero{ position:relative; padding:86px 0 64px }
+    .hero-inner{ display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center }
+    .badge{ display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid var(--ring); color:var(--muted); font-size:.88rem; background:color-mix(in oklab, var(--ink), transparent 92%) }
+    h1{ font-size:clamp(2rem, 4.5vw, 3.2rem); line-height:1.1; margin:14px 0 }
+    .sub{ color:var(--muted); font-size:1.05rem; margin:0 }
+    .cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:20px }
+    .glass{ background:color-mix(in oklab, var(--card), transparent 0%); border:1px solid var(--ring); border-radius:18px; padding:22px; box-shadow:var(--shadow) }
+    .mock{ aspect-ratio:16/10; border-radius:14px; border:1px dashed var(--ring); display:grid; place-items:center; color:var(--muted); font-weight:600; background:repeating-linear-gradient(135deg, color-mix(in oklab, var(--accent), transparent 88%), color-mix(in oklab, var(--accent-2), transparent 88%) 30px) }
+
+    .section{ padding:56px 0 }
+    .section h2{ font-size:clamp(1.6rem, 3.2vw, 2.2rem); margin:0 0 10px }
+    .lead{ color:var(--muted); margin:0 0 22px }
+    .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
+    .card{ background:var(--card); border:1px solid var(--ring); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow) }
+    .icon{ width:40px; height:40px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, color-mix(in oklab, var(--accent), transparent 8%), color-mix(in oklab, var(--accent-2), transparent 8%)); color:#0b1220; font-weight:900; margin-bottom:10px }
+
+    footer{ padding:40px 0 70px; color:var(--muted); border-top:1px solid var(--ring) }
+
+    @media (max-width: 900px){
+      .hero-inner{ grid-template-columns:1fr }
+      .grid-3{ grid-template-columns:1fr }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="logo" aria-hidden="true"></span> Nova</div>
+      <nav class="links">
+        <a class="pill" href="#features">Features</a>
+        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#contact">Contact</a>
+        <a class="pill primary" href="#get">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="badge">✨ No JS • Just HTML & CSS</span>
+          <h1>Build something fresh, fast & minimal.</h1>
+          <p class="sub">A clean landing page that’s lightweight, responsive, and easy to customize. Copy → Paste → Ship.</p>
+          <div class="cta">
+            <a class="pill primary" href="#get">Start Free</a>
+            <a class="pill" href="#features">See Features</a>
+          </div>
+        </div>
+        <div class="glass">
+          <div class="mock">Your Screenshot / Product Image</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2>Simple, but unique.</h2>
+        <p class="lead">Thoughtful defaults, tasteful gradients, and little touches that make it feel premium—without the bloat.</p>
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">A</div>
+            <h3>Accessible</h3>
+            <p>Readable contrast, keyboard‑friendly focus, and responsive by default.</p>
+          </article>
+          <article class="card">
+            <div class="icon">S</div>
+            <h3>Speedy</h3>
+            <p>No frameworks, no scripts—just clean CSS that loads instantly.</p>
+          </article>
+          <article class="card">
+            <div class="icon">C</div>
+            <h3>Customizable</h3>
+            <p>Edit colors and radius in <code>:root</code>; ship your brand in minutes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© 2025 Nova. Built with pure HTML & CSS.</small>
+    </div>
+  </footer>
+</body>
+</html>
